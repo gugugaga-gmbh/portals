@@ -2,6 +2,8 @@
 
 Gugugaga provides evidence-based guides on fertility, pregnancy week by week, baby care, baby names, and printable bedtime stories across 17 country portals.
 
+**Interactive Directory:** [gugugaga-gmbh.github.io/portals](https://gugugaga-gmbh.github.io/portals/)
+
 | Country / Locale | Website | RSS Feed | Sitemap |
 | :--- | :--- | :--- | :--- |
 | Deutschland (`de-de`) | [www.gugugaga.de](https://www.gugugaga.de/) | [RSS](https://www.gugugaga.de/index.xml) | [Sitemap](https://www.gugugaga.de/sitemap.xml) |

@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gugugaga — Official Country Portals</title>
+  <meta name="description" content="Evidence-based guides on fertility, pregnancy week by week, baby care, baby names, and printable bedtime stories across 17 country portals." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #faf8f5;
+      --surface: #ffffff;
+      --surface-muted: #f3efe8;
+      --text: #1c1b18;
+      --text-muted: #656058;
+      --border: #e6dfd5;
+      --border-strong: #d4cabd;
+      --accent: #1f6b66;
+      --accent-hover: #17524e;
+      --accent-soft: #e6f1f0;
+      --shadow-sm: 0 1px 2px rgba(28, 27, 24, 0.04);
+      --shadow-md: 0 8px 24px rgba(28, 27, 24, 0.07);
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      padding: 56px 0 36px;
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: var(--accent);
+      color: #ffffff;
+      display: grid;
+      place-items: center;
+      font-family: "Fraunces", serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .repo-link {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 6px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--surface);
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .repo-link:hover {
+      border-color: var(--border-strong);
+      color: var(--text);
+    }
+
+    h1 {
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 600;
+      font-size: clamp(2rem, 4vw, 2.85rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+    }
+
+    .subtitle {
+      max-width: 660px;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    /* Slider / Carousel */
+    .slider-section {
+      margin: 12px 0 44px;
+    }
+
+    .slider-shell {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+
+    .slider-track {
+      display: flex;
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+
+    .slide {
+      min-width: 100%;
+      padding: 32px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      background: linear-gradient(135deg, var(--surface) 0%, var(--surface-muted) 100%);
+    }
+
+    .slide-content {
+      max-width: 620px;
+    }
+
+    .slide-kicker {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .slide-title {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 1.45rem;
+      font-weight: 600;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .slide-desc {
+      color: var(--text-muted);
+      font-size: 0.96rem;
+    }
+
+    .slide-visual {
+      flex-shrink: 0;
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      font-size: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .slider-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .slider-dots {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dot-btn {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      border: none;
+      background: var(--border-strong);
+      cursor: pointer;
+      transition: width 0.25s ease, background-color 0.25s ease;
+      padding: 0;
+    }
+
+    .dot-btn[aria-current="true"] {
+      width: 24px;
+      background: var(--accent);
+    }
+
+    .slider-arrows {
+      display: flex;
+      gap: 8px;
+    }
+
+    .arrow-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 1rem;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .arrow-btn:hover {
+      background: var(--surface-muted);
+      border-color: var(--border-strong);
+    }
+
+    /* Search & Toolbar */
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .search-wrap {
+      position: relative;
+      flex: 1 1 300px;
+      max-width: 440px;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+      display: flex;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 12px 40px 12px 42px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .search-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(31, 107, 102, 0.12);
+    }
+
+    .search-clear {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 24px;
+      height: 24px;
+      border: none;
+      border-radius: 50%;
+      background: var(--surface-muted);
+      color: var(--text-muted);
+      cursor: pointer;
+      display: none;
+      place-items: center;
+      font-size: 0.85rem;
+    }
+
+    .search-clear.visible {
+      display: grid;
+    }
+
+    .result-count {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Portal Cards Grid */
+    .portals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 18px;
+      padding-bottom: 64px;
+    }
+
+    .portal-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .portal-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--border-strong);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .country-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .flag {
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+
+    .country-name {
+      font-weight: 600;
+      font-size: 1.02rem;
+      line-height: 1.25;
+    }
+
+    .locale-badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      color: var(--text-muted);
+      background: var(--surface-muted);
+      padding: 3px 8px;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    .card-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .visit-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 10px 14px;
+      background: var(--surface-muted);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .visit-btn:hover {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    .meta-links {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.82rem;
+    }
+
+    .meta-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .meta-links a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    /* Empty State */
+    .empty-state {
+      display: none;
+      text-align: center;
+      padding: 56px 24px;
+      background: var(--surface);
+      border: 1px dashed var(--border-strong);
+      border-radius: var(--radius-lg);
+      margin-bottom: 64px;
+    }
+
+    .empty-state.visible {
+      display: block;
+    }
+
+    .empty-state p {
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .reset-btn {
+      padding: 8px 16px;
+      border: 1px solid var(--border-strong);
+      background: var(--surface);
+      color: var(--text);
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+    }
+
+    .reset-btn:hover {
+      background: var(--surface-muted);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0 40px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    @media (max-width: 640px) {
+      header {
+        padding: 36px 0 24px;
+      }
+
+      .slide {
+        padding: 24px 20px;
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .slide-visual {
+        width: 56px;
+        height: 56px;
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand-row">
+        <a class="brand" href="#">
+          <span class="brand-mark">G</span>
+          <span>Gugugaga</span>
+        </a>
+        <a class="repo-link" href="https://github.com/gugugaga-gmbh/portals" target="_blank" rel="noopener noreferrer">
+          GitHub Repository
+        </a>
+      </div>
+      <h1>Official Country Portals</h1>
+      <p class="subtitle">
+        Evidence-based guides on fertility, pregnancy week by week, baby care, baby names, and printable bedtime stories across 17 country portals.
+      </p>
+    </header>
+
+    <main>
+      <!-- Feature Slider -->
+      <section class="slider-section" aria-label="Highlights">
+        <div class="slider-shell">
+          <div class="slider-track" id="slider-track">
+            <article class="slide">
+              <div class="slide-content">
+                <span class="slide-kicker">17 Länderportale</span>
+                <h2 class="slide-title">Evidenzbasiertes Wissen in deiner Sprache</h2>
+                <p class="slide-desc">Jedes Portal bietet lokal angepasste Ratgeber von Kinderwunsch über Schwangerschaft bis hin zum ersten Lebensjahr.</p>
+              </div>
+              <div class="slide-visual" aria-hidden="true">🌍</div>
+            </article>
+            <article class="slide">
+              <div class="slide-content">
+                <span class="slide-kicker">Schwangerschaft</span>
+                <h2 class="slide-title">Woche für Woche begleitet</h2>
+                <p class="slide-desc">Übersichtliche Meilensteine, Checklisten und medizinisch geprüfte Informationen für jede Schwangerschaftswoche.</p>
+              </div>
+              <div class="slide-visual" aria-hidden="true">🤰</div>
+            </article>
+            <article class="slide">
+              <div class="slide-content">
+                <span class="slide-kicker">Familie &amp; Alltag</span>
+                <h2 class="slide-title">Babynamen &amp; Gute-Nacht-Geschichten</h2>
+                <p class="slide-desc">Inspiriert durch internationale Namensdatenbanken und druckbare Geschichten für ruhige Abende.</p>
+              </div>
+              <div class="slide-visual" aria-hidden="true">🌙</div>
+            </article>
+            <article class="slide">
+              <div class="slide-content">
+                <span class="slide-kicker">Offene Feeds</span>
+                <h2 class="slide-title">Direkter Zugriff auf RSS &amp; Sitemaps</h2>
+                <p class="slide-desc">Alle 17 Portale stellen strukturierte XML-Sitemaps und RSS-Feeds direkt auf jeder Karte bereit.</p>
+              </div>
+              <div class="slide-visual" aria-hidden="true">📡</div>
+            </article>
+          </div>
+          <div class="slider-controls">
+            <div class="slider-dots" id="slider-dots" role="tablist" aria-label="Slide navigation"></div>
+            <div class="slider-arrows">
+              <button class="arrow-btn" id="prev-slide" type="button" aria-label="Vorheriger Slide">&#8592;</button>
+              <button class="arrow-btn" id="next-slide" type="button" aria-label="Nächster Slide">&#8594;</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Search & Count -->
+      <section aria-label="Länderportale durchsuchen">
+        <div class="toolbar">
+          <div class="search-wrap">
+            <span class="search-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </span>
+            <input
+              id="portal-search"
+              class="search-input"
+              type="search"
+              placeholder="Land, Sprachcode (z. B. de-de) oder Domain suchen…"
+              autocomplete="off"
+            />
+            <button id="search-clear" class="search-clear" type="button" aria-label="Suche zurücksetzen">&times;</button>
+          </div>
+          <div class="result-count" id="result-count">17 Portale</div>
+        </div>
+
+        <!-- Portal Cards -->
+        <div class="portals-grid" id="portals-grid"></div>
+
+        <div class="empty-state" id="empty-state">
+          <p>Keine passenden Portale gefunden.</p>
+          <button class="reset-btn" id="reset-search" type="button">Alle Portale anzeigen</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Gugugaga GmbH — Country Portals Directory</span>
+      <span>17 Locales &middot; RSS &amp; Sitemaps</span>
+    </footer>
+  </div>
+
+  <script>
+    const PORTALS = [
+      { country: "Deutschland", locale: "de-de", flag: "🇩🇪", domain: "www.gugugaga.de" },
+      { country: "Österreich", locale: "de-at", flag: "🇦🇹", domain: "www.gugugaga.at" },
+      { country: "Schweiz", locale: "de-ch", flag: "🇨🇭", domain: "www.gugugaga.ch" },
+      { country: "United States", locale: "en-us", flag: "🇺🇸", domain: "www.gugugaga.us" },
+      { country: "United Kingdom", locale: "en-gb", flag: "🇬🇧", domain: "www.gugugaga.uk" },
+      { country: "Россия", locale: "ru-ru", flag: "🇷🇺", domain: "www.gugugaga.ru" },
+      { country: "France", locale: "fr-fr", flag: "🇫🇷", domain: "www.gugugaga.fr" },
+      { country: "Italia", locale: "it-it", flag: "🇮🇹", domain: "www.gugugaga.it" },
+      { country: "México", locale: "es-mx", flag: "🇲🇽", domain: "www.gugugaga.mx" },
+      { country: "Colombia", locale: "es-co", flag: "🇨🇴", domain: "www.gugugaga.co" },
+      { country: "Brasil", locale: "pt-br", flag: "🇧🇷", domain: "www.gugugaga.com.br" },
+      { country: "Portugal", locale: "pt-pt", flag: "🇵🇹", domain: "www.gugugaga.pt" },
+      { country: "Nederland", locale: "nl-nl", flag: "🇳🇱", domain: "www.gugugaga.nl" },
+      { country: "België / Belgique", locale: "nl-be", flag: "🇧🇪", domain: "www.gugugaga.be" },
+      { country: "Sverige", locale: "sv-se", flag: "🇸🇪", domain: "www.gugugaga.se" },
+      { country: "Türkiye", locale: "tr-tr", flag: "🇹🇷", domain: "www.gugugaga.com.tr" },
+      { country: "Ελλάδα", locale: "el-gr", flag: "🇬🇷", domain: "www.gugugaga.gr" }
+    ];
+
+    // Slider logic
+    const track = document.getElementById("slider-track");
+    const dotsContainer = document.getElementById("slider-dots");
+    const slides = Array.from(track.children);
+    let currentSlide = 0;
+    let autoplayTimer = null;
+
+    slides.forEach((_, idx) => {
+      const dot = document.createElement("button");
+      dot.className = "dot-btn";
+      dot.type = "button";
+      dot.setAttribute("aria-label", `Slide ${idx + 1}`);
+      dot.addEventListener("click", () => {
+        goToSlide(idx);
+        restartAutoplay();
+      });
+      dotsContainer.appendChild(dot);
+    });
+
+    function goToSlide(index) {
+      currentSlide = (index + slides.length) % slides.length;
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+      Array.from(dotsContainer.children).forEach((dot, idx) => {
+        dot.setAttribute("aria-current", idx === currentSlide ? "true" : "false");
+      });
+    }
+
+    function restartAutoplay() {
+      clearInterval(autoplayTimer);
+      autoplayTimer = setInterval(() => goToSlide(currentSlide + 1), 6000);
+    }
+
+    document.getElementById("prev-slide").addEventListener("click", () => {
+      goToSlide(currentSlide - 1);
+      restartAutoplay();
+    });
+
+    document.getElementById("next-slide").addEventListener("click", () => {
+      goToSlide(currentSlide + 1);
+      restartAutoplay();
+    });
+
+    goToSlide(0);
+    restartAutoplay();
+
+    // Cards & Search logic
+    const grid = document.getElementById("portals-grid");
+    const searchInput = document.getElementById("portal-search");
+    const clearBtn = document.getElementById("search-clear");
+    const resetBtn = document.getElementById("reset-search");
+    const resultCount = document.getElementById("result-count");
+    const emptyState = document.getElementById("empty-state");
+
+    function renderPortals(filter = "") {
+      const query = filter.trim().toLowerCase();
+      const filtered = PORTALS.filter((p) => {
+        if (!query) return true;
+        return (
+          p.country.toLowerCase().includes(query) ||
+          p.locale.toLowerCase().includes(query) ||
+          p.domain.toLowerCase().includes(query)
+        );
+      });
+
+      grid.innerHTML = "";
+      filtered.forEach((p) => {
+        const baseUrl = `https://${p.domain}`;
+        const card = document.createElement("article");
+        card.className = "portal-card";
+        card.innerHTML = `
+          <div class="card-top">
+            <div class="country-info">
+              <span class="flag" aria-hidden="true">${p.flag}</span>
+              <h3 class="country-name">${p.country}</h3>
+            </div>
+            <span class="locale-badge">${p.locale}</span>
+          </div>
+          <div class="card-actions">
+            <a class="visit-btn" href="${baseUrl}/" target="_blank" rel="noopener noreferrer">
+              <span>${p.domain}</span>
+              <span aria-hidden="true">&#8599;</span>
+            </a>
+            <div class="meta-links">
+              <a href="${baseUrl}/index.xml" target="_blank" rel="noopener noreferrer">RSS Feed</a>
+              <a href="${baseUrl}/sitemap.xml" target="_blank" rel="noopener noreferrer">Sitemap</a>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      const count = filtered.length;
+      resultCount.textContent = count === 1 ? "1 Portal" : `${count} Portale`;
+      emptyState.classList.toggle("visible", count === 0);
+      clearBtn.classList.toggle("visible", query.length > 0);
+    }
+
+    searchInput.addEventListener("input", (e) => renderPortals(e.target.value));
+    clearBtn.addEventListener("click", () => {
+      searchInput.value = "";
+      renderPortals("");
+      searchInput.focus();
+    });
+    resetBtn.addEventListener("click", () => {
+      searchInput.value = "";
+      renderPortals("");
+      searchInput.focus();
+    });
+
+    renderPortals();
+  </script>
+</body>
+</html>
